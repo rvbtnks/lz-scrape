@@ -1,7 +1,7 @@
 # lz-scrape
 leakedzone scraper in python
 
-requires yt-dlp
+requires yt-dlp and geckodriver
 
 cookie needs to be put into the config.env file
 
@@ -10,3 +10,7 @@ FlagCookies Extension
 
 Click on the Preferences -->  "Export cookie data to clipboard" 
 Paste into config.env
+
+
+known issues: sometimes it doesn't scroll to the bottom. rerun the script.
+sometimes it will try to grab ad videos. 
