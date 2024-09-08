@@ -48,14 +48,21 @@ async def download_video(m3u8_url):
     print(f"Downloading video to {filename}")
     command = [
         "yt-dlp",
+        "--retries", "5",
+        "--fragment-retries", "5",
         "-o", filename,
         m3u8_url
     ]
-    result = subprocess.run(command, capture_output=True, text=True)
-    if result.returncode == 0:
-        print(f"Download completed: {filename}")
-    else:
-        print(f"Error downloading video: {result.stderr}")
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, timeout=600)  # Set a timeout in seconds
+        if result.returncode == 0:
+            print(f"Download completed: {filename}")
+        else:
+            print(f"Error downloading video: {result.stderr}")
+    except subprocess.TimeoutExpired:
+        print(f"Download timed out: {m3u8_url}. Moving to the next file.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}. Moving to the next file.")
 
 async def click_center(page):
     # Wait until the page is fully loaded
