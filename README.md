@@ -17,7 +17,11 @@ Paste into config.env
 
 
 known issues: sometimes it doesn't scroll to the bottom. rerun the script.
+
 sometimes it will try to grab ad videos. 
+
+some videos won't download. still looking into why exactly. they won't download with things like jdownload or videodownloadhelper either.
+i'll figure it out though.
 
 i don't do this professionally. is just hobby.
 
